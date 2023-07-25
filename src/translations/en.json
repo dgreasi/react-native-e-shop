@@ -1,0 +1,8 @@
+{
+  "ERRORS": {
+    "SOMETHING_WENT_WRONG": "Oops, something went wrong",
+    "UNAUTHORIZED": "This function is unavailable",
+    "NO_INTERNET": "Please check your internet connection and try again",
+    "SOMETHING_WENT_WRONG_CONTACT_ADMIN": "Something went wrong. Please contact with us."
+  }
+}
