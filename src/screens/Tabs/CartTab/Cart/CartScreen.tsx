@@ -1,8 +1,18 @@
 import * as React from 'react';
-import { Text } from '~components';
+import { Box } from '~components';
+import { CartList } from '~screens/Tabs/CartTab/Cart/components/CartList';
+import { Screen } from '~components/layout/Screen';
+import { ProceedToCheckoutButton } from '~screens/Tabs/CartTab/Cart/components/ProceedToCheckoutButton';
 
 const CartScreen = () => {
-  return <Text variant="oswald">Cart screen</Text>;
+  return (
+    <Screen full>
+      <Box paddingTop="s">
+        <CartList />
+      </Box>
+      <ProceedToCheckoutButton />
+    </Screen>
+  );
 };
 
 export default CartScreen;

@@ -4,3 +4,4 @@ export { default as FavouritesScreen } from './Tabs/FavouritesTab/Favourites/Fav
 export { default as CartScreen } from './Tabs/CartTab/Cart/CartScreen';
 export { default as ProfileScreen } from './Tabs/ProfileTab/Profile/ProfileScreen';
 export { default as EntityScreen } from './Entity/EntityScreen';
+export { default as CheckoutScreen } from './Checkout/CheckoutScreen';
