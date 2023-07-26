@@ -6,7 +6,7 @@
     "start": "react-native start",
     "android": "react-native run-android",
     "ios": "react-native run-ios --simulator='iPhone 14'",
-    "iosmini": "react-native run-ios --simulator='iPhone 13 mini'",
+    "iosmini": "react-native run-ios --simulator='iPhone 14 mini'",
     "clean-android": "cd android && ./gradlew clean",
     "sim": "open -a simulator",
     "clean-pods": "cd ios && pod deintegrate",

@@ -1,5 +1,5 @@
 import { getCartsStorage, setCartStorage } from '~services/localstorage.service';
-import { IProductInCart } from '~store/cart/cartSlice.interface';
+import { ICartInState, IProductInCart } from '~store/cart/cartSlice.interface';
 import { IEntity } from '~interfaces/entity.interface';
 
 export const getCartService = async (): Promise<IProductInCart[]> => {
@@ -10,7 +10,7 @@ export const getCartService = async (): Promise<IProductInCart[]> => {
 export const updateQuantityOfProductToCartStorage = async (
   product: IEntity,
   type: 'add' | 'sub' = 'add',
-): Promise<IProductInCart[]> => {
+): Promise<ICartInState> => {
   const cart = await getCartsStorage();
   // Get index of product in array
   const productInCart = cart[product.id];
@@ -19,15 +19,16 @@ export const updateQuantityOfProductToCartStorage = async (
     if (type === 'add') productInCart.quantity += 1;
     if (type === 'sub') productInCart.quantity -= 1;
   } else {
-    cart[product.id] = { entity: product, quantity: 1 };
+    const indexOfItem = Object.keys(cart).length + 1;
+    cart[product.id] = { entity: product, quantity: 1, index: indexOfItem };
   }
 
   await setCartStorage(cart);
 
-  return Object.values(cart);
+  return cart;
 };
 
-export const removeProductFromCartStorage = async (productId: number): Promise<IProductInCart[]> => {
+export const removeProductFromCartStorage = async (productId: number): Promise<ICartInState> => {
   const cart = await getCartsStorage();
   // Get index of product in array
   const productInCart = cart[productId];
@@ -38,5 +39,5 @@ export const removeProductFromCartStorage = async (productId: number): Promise<I
 
   await setCartStorage(cart);
 
-  return Object.values(cart);
+  return cart;
 };

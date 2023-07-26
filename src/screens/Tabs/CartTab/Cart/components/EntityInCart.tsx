@@ -102,7 +102,7 @@ const EntityInCart = ({ entity, index, quantity }: Props) => {
                 </TouchableOpacity>
               </Box>
               <Box style={styles.quantityContainer}>
-                <QuantityPicker product={{ entity, quantity }} minus={minus} add={add} />
+                <QuantityPicker quantity={quantity} minus={minus} add={add} />
                 <TouchableOpacity onPress={onPressCard} activeOpacity={0.5}>
                   <Text variant="body2" color="primary800" fontWeight="700">
                     {price.toFixed(2)} €

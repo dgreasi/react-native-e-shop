@@ -1,16 +1,15 @@
 import * as React from 'react';
-import { IProductInCart } from '~store/cart/cartSlice.interface';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import { Box, Icon, Text } from '~components';
 import theme from '~theme/theme';
 
 interface Props {
-  product: IProductInCart;
+  quantity: number;
   minus: () => void;
   add: () => void;
 }
 
-export const QuantityPicker = ({ product, minus, add }: Props) => {
+export const QuantityPicker = ({ quantity, minus, add }: Props) => {
   return (
     <Box
       style={styles.container}
@@ -22,16 +21,16 @@ export const QuantityPicker = ({ product, minus, add }: Props) => {
       flexDirection="row"
       alignItems="center">
       <Box width="35%" borderRadius="ml">
-        <TouchableOpacity disabled={product?.quantity === 1} onPress={minus} style={styles.btn}>
+        <TouchableOpacity disabled={quantity === 1} onPress={minus} style={styles.btn}>
           <Icon
             name="ic_24_minus"
             size={20}
-            color={product?.quantity === 1 ? theme.colors.primary400 : theme.colors.primary900}
+            color={quantity === 1 ? theme.colors.primary400 : theme.colors.primary900}
           />
         </TouchableOpacity>
       </Box>
       <Box width="30%" alignItems="center" justifyContent="center">
-        <Text variant="body1">{product?.quantity}</Text>
+        <Text variant="body1">{quantity}</Text>
       </Box>
       <Box width="35%" borderRadius="ml">
         <TouchableOpacity onPress={add} style={styles.btn}>

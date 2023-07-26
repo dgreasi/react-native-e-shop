@@ -10,7 +10,7 @@ import {
 import { IEntity } from '~interfaces/entity.interface';
 
 const initialState: ICartState = {
-  cart: [],
+  cart: {},
 };
 
 export const cartSlice = createSlice({
@@ -57,7 +57,7 @@ export const removeProductFromCartAsync =
 export const clearCartAsync =
   (): AppThunk =>
   async (dispatch: AppDispatch): Promise<void> => {
-    dispatch(setCart({ cart: [] }));
+    dispatch(setCart({ cart: {} }));
     setCartStorage({});
   };
 
@@ -65,7 +65,10 @@ export const clearCartAsync =
 export const { setCart, resetCart } = cartSlice.actions;
 
 //////////////////////////////// SELECTORS ////////////////////////////////
-export const selectCart = (state: ICartSlice): IProductInCart[] => state.cart.cart;
+export const selectCart = (state: ICartSlice): IProductInCart[] => {
+  const list = Object.values(state.cart.cart) || [];
+  return list.sort((a, b) => b.index - a.index);
+};
 
 export const selectProductsInCartLength = createSelector(selectCart, (cart) => {
   return cart.reduce((acc, cur) => acc + cur.quantity, 0);
