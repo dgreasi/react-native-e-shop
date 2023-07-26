@@ -1,14 +1,9 @@
 export enum MAIN_ROUTES {
-  HOME = 'Home',
-  ENTITY = 'Entity',
-  SEARCH = 'Search',
   TABS = 'Tabs',
-  CART = 'Cart',
+  ENTITY = 'Entity',
 }
 
 export type MainRoutes = {
-  Home: undefined;
+  Tabs: undefined;
   Entity: { id: string };
-  Search: undefined;
-  Product: { productID: string, product?: any };
 };
