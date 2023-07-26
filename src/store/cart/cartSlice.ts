@@ -2,7 +2,11 @@ import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppDispatch, AppThunk } from '~store/store';
 import { ICartSlice, ICartState, IProductInCart, SetCartPayload } from '~store/cart/cartSlice.interface';
 import { setCartStorage } from '~services/localstorage.service';
-import { getCartService, updateQuantityOfProductToCartStorage } from '~services/cart.service';
+import {
+  getCartService,
+  removeProductFromCartStorage,
+  updateQuantityOfProductToCartStorage,
+} from '~services/cart.service';
 import { IEntity } from '~interfaces/entity.interface';
 
 const initialState: ICartState = {
@@ -40,6 +44,13 @@ export const changeQuantityOfProductAsync =
   (product: IEntity, type: 'add' | 'sub'): AppThunk =>
   async (dispatch: AppDispatch): Promise<void> => {
     const updatedCart = await updateQuantityOfProductToCartStorage(product, type);
+    dispatch(setCart({ cart: updatedCart }));
+  };
+
+export const removeProductFromCartAsync =
+  (productId: number): AppThunk =>
+  async (dispatch: AppDispatch): Promise<void> => {
+    const updatedCart = await removeProductFromCartStorage(productId);
     dispatch(setCart({ cart: updatedCart }));
   };
 

@@ -27,7 +27,7 @@ A simple react native project that consists of:
    - Here you are going to see a list of products that you have added to cart through the `Add to cart`
    - The card component has a quantity component instead of the `Add to cart` one compared to the home screen cards
    - You can increase the number of each product which is going to change the subtotal of the product and the total cost of your order
-   - You can remove an item from your cart by swiping to your left and then tapping the delete button at the right of the product card
+   - You can remove an item from your cart by swiping from your right and then tapping the delete button at the right of the product card
    - At the bottom of the screen there is a floating button `Proceed to checkout` which contains the total price of your cart
      - By clicking it you will be navigated to an empty/dummy checkout screen
    - The cart tab button/icon will indicate at the top right the number of products (sum of quantities) in total

@@ -26,3 +26,17 @@ export const updateQuantityOfProductToCartStorage = async (
 
   return Object.values(cart);
 };
+
+export const removeProductFromCartStorage = async (productId: number): Promise<IProductInCart[]> => {
+  const cart = await getCartsStorage();
+  // Get index of product in array
+  const productInCart = cart[productId];
+
+  if (productInCart) {
+    delete cart[productId];
+  }
+
+  await setCartStorage(cart);
+
+  return Object.values(cart);
+};
