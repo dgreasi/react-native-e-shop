@@ -192,6 +192,12 @@ const theme = createTheme({
       lineHeight: 18,
       ...WEIGHT.REGULAR,
     },
+    cartBadge: {
+      color: 'primary900',
+      fontSize: 12,
+      lineHeight: 14,
+      ...WEIGHT.BOLD,
+    },
   },
   navigation: {
     dark: false,
