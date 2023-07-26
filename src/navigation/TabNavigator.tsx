@@ -6,6 +6,9 @@ import { CartNavigator } from '~navigation/Cart/CartNavigator';
 import { FavouritesNavigator } from '~navigation/Favourites/FavouritesNavigator';
 import { ProfileNavigator } from '~navigation/Profile/ProfileNavigator';
 import { BottomTabButton } from '~components';
+import { SearchNavigator } from '~navigation/Search/SearchNavigator';
+import { selectProductsInCartLength } from '~store/cart/cartSlice';
+import { useSelector } from 'react-redux';
 
 const Tab = createBottomTabNavigator();
 
@@ -17,8 +20,14 @@ interface ITabRoute {
   badge?: number;
 }
 
-let TabRoutes: ITabRoute[] = [
+const TabRoutes: ITabRoute[] = [
   { name: 'HomeTab', component: HomeNavigator, options: { tabBarTestID: 'tab-home-btn' }, icon: 'ic_24_home' },
+  {
+    name: 'SearchTab',
+    component: SearchNavigator,
+    options: { tabBarTestID: 'tab-search-btn' },
+    icon: 'ic_24_search',
+  },
   {
     name: 'CartTab',
     component: CartNavigator,
@@ -41,13 +50,13 @@ let TabRoutes: ITabRoute[] = [
 ];
 
 export const TabNavigator = () => {
-  // TODO: create and use selector to get number of items in cart
+  TabRoutes[2].badge = useSelector(selectProductsInCartLength);
 
   return (
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarStyle: { backgroundColor: theme.colors.background, ...Platform.select({ android: { height: 62 } }) },
+        tabBarStyle: { backgroundColor: theme.colors.white, ...Platform.select({ android: { height: 62 } }) },
       }}>
       {TabRoutes.map((item, index) => {
         return (

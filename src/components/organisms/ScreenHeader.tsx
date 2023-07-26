@@ -16,25 +16,24 @@ interface Props {
 export const ScreenHeader = ({ noShadow, options }: Props) => {
   const { height } = useHeaderHeight();
 
+  if (!options.title) {
+    return <Box height={(height+5) / 2}></Box>;
+  }
+
   return (
     <Box borderBottomColor={noShadow ? 'background' : 'shadow'} style={[styles.container, { height: height + 5 }]}>
-      <Box flexDirection="row" alignItems="center" justifyContent="space-between" width="100%" height={40}>
-        {options?.title && (
+      {options?.title && (
+        <Box flexDirection="row" alignItems="center" justifyContent="space-between" width="100%" height={40}>
           <Box alignItems="center" justifyContent="center" width="100%">
             <Text variant="headline">{options?.title}</Text>
           </Box>
-        )}
-      </Box>
+        </Box>
+      )}
     </Box>
   );
 };
 
 const styles = StyleSheet.create({
-  btnContainer: {
-    height: 40,
-    width: 40,
-    justifyContent: 'center',
-  },
   btnCalendar: {
     alignItems: 'flex-end',
   },

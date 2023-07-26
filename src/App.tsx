@@ -1,4 +1,5 @@
 import React from 'react';
+import 'react-native-gesture-handler';
 import { ThemeProvider } from '~theme/theme';
 import APIProvider from '~api/APIProvider';
 import RootNavigator from '~navigation/RootNavigator';
