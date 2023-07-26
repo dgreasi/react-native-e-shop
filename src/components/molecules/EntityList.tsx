@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { BasicLoader, Box, EntityCard, Text } from '~components';
 import { useSearch } from '~api/search/useSearch';
-import { FlatList, StyleSheet } from 'react-native';
+import { FlatList, RefreshControl, StyleSheet } from 'react-native';
 import theme from '~theme/theme';
 import ErrorEmpty from '~components/molecules/ErrorEmpty';
 import { IEntity } from '~interfaces/entity.interface';
@@ -16,7 +16,7 @@ interface Props {
 }
 
 const EntityList = ({ search }: Props) => {
-  const { data, isLoading, isError } = useSearch(search);
+  const { data, isLoading, isError, refetch, isRefetching } = useSearch(search);
 
   const keyExtractor = useCallback((item: IEntity) => String(item.id), []);
 
@@ -33,7 +33,7 @@ const EntityList = ({ search }: Props) => {
   if (isError) {
     return (
       <Box flex={1} marginTop="xl">
-        <ErrorEmpty />
+        <ErrorEmpty btnLabel={'Refresh'} onPress={refetch} />
       </Box>
     );
   }
@@ -50,6 +50,9 @@ const EntityList = ({ search }: Props) => {
       renderItem={renderEntities}
       keyExtractor={keyExtractor}
       contentContainerStyle={styles.container}
+      refreshControl={
+        <RefreshControl refreshing={isRefetching} onRefresh={refetch} tintColor={theme.colors.primary900} />
+      }
       columnWrapperStyle={undefined}
     />
   );

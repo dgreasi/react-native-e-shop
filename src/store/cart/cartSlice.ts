@@ -66,6 +66,7 @@ export const { setCart, resetCart } = cartSlice.actions;
 
 //////////////////////////////// SELECTORS ////////////////////////////////
 export const selectCart = (state: ICartSlice): IProductInCart[] => state.cart.cart;
+
 export const selectProductsInCartLength = createSelector(selectCart, (cart) => {
   return cart.reduce((acc, cur) => acc + cur.quantity, 0);
 });
