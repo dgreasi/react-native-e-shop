@@ -35,10 +35,17 @@ export const Button = ({
 }: Props) => {
   let borderWidth = 0;
 
-  if (variant === 'outline') {
-    backgroundColor = PALETTE.TRANSPARENT;
-    borderWidth = 1;
-  }
+  const getBackgroundColor = () => {
+    if (disabled) {
+      return theme.colors.primary600;
+    }
+    if (variant === 'outline') {
+      backgroundColor = PALETTE.TRANSPARENT;
+      borderWidth = 1;
+    }
+
+    return backgroundColor ? theme.colors[backgroundColor] : theme.colors.buttonMain;
+  };
 
   return (
     <RectButton
@@ -47,7 +54,7 @@ export const Button = ({
       style={[
         styles.button,
         {
-          backgroundColor: backgroundColor ? theme.colors[backgroundColor] : theme.colors.buttonMain,
+          backgroundColor: getBackgroundColor(),
           width: width || '100%',
         },
       ]}

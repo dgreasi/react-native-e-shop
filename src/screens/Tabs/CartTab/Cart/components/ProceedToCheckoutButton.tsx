@@ -13,13 +13,15 @@ import { Box } from '~components';
 export const ProceedToCheckoutButton = () => {
   const cart = useSelector(selectCart);
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+  const [subTotal, setSubTotal] = useState<number>(0);
   const [label, setLabel] = useState<string>('Proceed to checkout');
 
   useEffect(() => {
-    const subTotal = cart.reduce((acc, cur) => {
+    const total = cart.reduce((acc, cur) => {
       return acc + cur.entity.price * cur.quantity;
     }, 0);
-    setLabel(`Proceed to checkout | ${subTotal.toFixed(2)} €`);
+    setSubTotal(total);
+    setLabel(`Proceed to checkout | ${total.toFixed(2)} €`);
   }, [cart]);
 
   const proceedToCheckout = () => {
@@ -28,7 +30,7 @@ export const ProceedToCheckoutButton = () => {
 
   return (
     <Box style={styles.container}>
-      <Button onPress={proceedToCheckout} label={label} width={CARD_WIDTH_FULL} />
+      <Button onPress={proceedToCheckout} label={label} width={CARD_WIDTH_FULL} disabled={subTotal === 0} />
     </Box>
   );
 };

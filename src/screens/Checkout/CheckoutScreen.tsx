@@ -10,7 +10,7 @@ const CheckoutScreen = () => {
       <Box style={styles.container} height="100%">
         <EntityHeader />
         <Text variant="oswald" textAlign="center">
-          Checkout page
+          Checkout screen
         </Text>
       </Box>
     </Screen>
