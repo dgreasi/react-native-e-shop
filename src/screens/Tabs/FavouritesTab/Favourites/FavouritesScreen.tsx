@@ -1,8 +1,16 @@
 import * as React from 'react';
-import { Text } from '~components';
+import { Box } from '~components';
+import FavouritesList from '~screens/Tabs/HomeTab/Home/components/FavouritesList';
+import { Screen } from '~components/layout/Screen';
 
 const FavouritesScreen = () => {
-  return <Text variant="oswald">Favourites screen</Text>;
+  return (
+    <Screen full>
+      <Box paddingTop="s">
+        <FavouritesList />
+      </Box>
+    </Screen>
+  );
 };
 
 export default FavouritesScreen;
