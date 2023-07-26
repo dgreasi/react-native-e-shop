@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Box, Text } from '~components';
 import { Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -10,14 +10,24 @@ interface Props {
   title?: string;
   subtitle?: string;
   imgStyles?: any;
+  onPress?: () => void;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const defaultImg = require('../../../assets/sth_went_wrong.png');
-const ErrorEmpty = ({ title, subtitle, btnLabel, img, imgStyles }: Props) => {
+const ErrorEmpty = ({ title, subtitle, btnLabel, img, imgStyles, onPress }: Props) => {
   const navigation = useNavigation();
   const titleToShow = title || 'Ooops';
   const subtitleToShow = subtitle || en.ERRORS.SOMETHING_WENT_WRONG;
+
+  const onPressAction = useCallback(() => {
+    if (onPress) {
+      onPress();
+      return;
+    }
+
+    navigation.goBack();
+  }, [onPress, navigation]);
 
   return (
     <Box flex={1} alignItems="center" paddingTop="ml" backgroundColor="background">
@@ -34,7 +44,7 @@ const ErrorEmpty = ({ title, subtitle, btnLabel, img, imgStyles }: Props) => {
         </Text>
       </Box>
       <Box marginTop="xl">
-        <TouchableOpacity onPress={navigation.goBack}>
+        <TouchableOpacity onPress={onPressAction}>
           <Text variant="link">{btnLabel || 'Go back'}</Text>
         </TouchableOpacity>
       </Box>
