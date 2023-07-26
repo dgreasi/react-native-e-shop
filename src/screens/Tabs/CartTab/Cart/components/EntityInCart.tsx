@@ -4,14 +4,14 @@ import theme from '~theme/theme';
 import { ParamListBase, useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import Animated, { FadeIn, Layout } from 'react-native-reanimated';
-import { Animated as RNAnimated, StyleSheet, TouchableOpacity } from 'react-native';
+import { Animated as RNAnimated, StyleSheet } from 'react-native';
 import { Box, FavouriteButton, Icon, ImageWithFallback, Text } from '~components';
 import { MAIN_ROUTES } from '~navigation/Main/mainTypes';
 import { IEntity } from '~interfaces/entity.interface';
 import { useDispatch } from 'react-redux';
 import { QuantityPicker } from '~screens/Tabs/CartTab/Cart/components/QuantityPicker';
 import { changeQuantityOfProductAsync, removeProductFromCartAsync } from '~store/cart/cartSlice';
-import { RectButton, Swipeable } from 'react-native-gesture-handler';
+import { RectButton, Swipeable, TouchableOpacity } from 'react-native-gesture-handler';
 import AnimatedInterpolation = RNAnimated.AnimatedInterpolation;
 
 interface Props {
@@ -68,8 +68,8 @@ const EntityInCart = ({ entity, index, quantity }: Props) => {
   };
 
   const deleteProduct = () => {
-    swipeableRow?.close();
     dispatch(removeProductFromCartAsync(entity.id));
+    swipeableRow?.close();
   };
 
   const rightSwipeActions = (progress: AnimatedInterpolation<number>) => {
@@ -87,21 +87,27 @@ const EntityInCart = ({ entity, index, quantity }: Props) => {
       renderRightActions={rightSwipeActions}
       overshootRight={false}
       childrenContainerStyle={styles.swipeable}>
-      <TouchableOpacity onPress={onPressCard} activeOpacity={0.5} style={styles.touchable}>
+      <Box style={styles.touchable}>
         <Animated.View entering={FadeIn.delay(100 * index)} layout={Layout}>
           <Box style={styles.container}>
-            <ImageWithFallback source={{ uri: entity?.image }} styles={styles.imageContainers} />
+            <TouchableOpacity onPress={onPressCard} activeOpacity={0.5}>
+              <ImageWithFallback source={{ uri: entity?.image }} styles={styles.imageContainers} />
+            </TouchableOpacity>
             <Box paddingLeft="m" style={styles.detailsContainer} height={IMAGE_IN_LIST}>
               <Box width="80%">
-                <Text variant="oswald" numberOfLines={2}>
-                  {entity?.title}
-                </Text>
+                <TouchableOpacity onPress={onPressCard} activeOpacity={0.5}>
+                  <Text variant="oswald" numberOfLines={2}>
+                    {entity?.title}
+                  </Text>
+                </TouchableOpacity>
               </Box>
               <Box style={styles.quantityContainer}>
                 <QuantityPicker product={{ entity, quantity }} minus={minus} add={add} />
-                <Text variant="body2" color="primary800" fontWeight="700">
-                  {price.toFixed(2)} €
-                </Text>
+                <TouchableOpacity onPress={onPressCard} activeOpacity={0.5}>
+                  <Text variant="body2" color="primary800" fontWeight="700">
+                    {price.toFixed(2)} €
+                  </Text>
+                </TouchableOpacity>
               </Box>
             </Box>
           </Box>
@@ -110,7 +116,7 @@ const EntityInCart = ({ entity, index, quantity }: Props) => {
             <FavouriteButton entity={entity} size={20} />
           </Box>
         </Animated.View>
-      </TouchableOpacity>
+      </Box>
     </Swipeable>
   );
 };
@@ -158,7 +164,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: theme.borderRadii.m
+    borderRadius: theme.borderRadii.m,
   },
 });
 
