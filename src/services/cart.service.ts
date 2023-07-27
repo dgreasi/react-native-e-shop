@@ -1,26 +1,25 @@
 import { getCartsStorage, setCartStorage } from '~services/localstorage.service';
-import { ICartInState, IProductInCart } from '~store/cart/cartSlice.interface';
+import { IProductInCart } from '~store/cart/cartSlice.interface';
 import { IEntity } from '~interfaces/entity.interface';
 
 export const getCartService = async (): Promise<IProductInCart[]> => {
-  const cart = await getCartsStorage();
-  return Object.values(cart);
+  return await getCartsStorage();
 };
 
 export const updateQuantityOfProductToCartStorage = async (
   product: IEntity,
   type: 'add' | 'sub' = 'add',
-): Promise<ICartInState> => {
+): Promise<IProductInCart[]> => {
   const cart = await getCartsStorage();
   // Get index of product in array
-  const productInCart = cart[product.id];
+  const productIndex = cart.findIndex((item) => item.entity.id === product.id);
 
-  if (productInCart) {
-    if (type === 'add') productInCart.quantity += 1;
-    if (type === 'sub') productInCart.quantity -= 1;
+  if (productIndex > -1) {
+    if (type === 'add') cart[productIndex].quantity += 1;
+    if (type === 'sub') cart[productIndex].quantity -= 1;
   } else {
-    const indexOfItem = Object.keys(cart).length + 1;
-    cart[product.id] = { entity: product, quantity: 1, index: indexOfItem };
+    const indexOfItem = cart.length + 1;
+    cart.unshift({ entity: product, quantity: 1, index: indexOfItem });
   }
 
   await setCartStorage(cart);
@@ -28,13 +27,13 @@ export const updateQuantityOfProductToCartStorage = async (
   return cart;
 };
 
-export const removeProductFromCartStorage = async (productId: number): Promise<ICartInState> => {
+export const removeProductFromCartStorage = async (productId: number): Promise<IProductInCart[]> => {
   const cart = await getCartsStorage();
   // Get index of product in array
-  const productInCart = cart[productId];
+  const productIndex = cart.findIndex((item) => item.entity.id === productId);
 
-  if (productInCart) {
-    delete cart[productId];
+  if (productIndex > -1) {
+    cart.splice(productIndex, 1);
   }
 
   await setCartStorage(cart);

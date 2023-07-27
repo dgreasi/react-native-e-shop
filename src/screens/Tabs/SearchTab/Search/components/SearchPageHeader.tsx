@@ -46,7 +46,7 @@ const SearchPageHeader = ({ hideShadow, setSearchQuery, searchQuery, setSearchFo
       alignItems="center"
       borderBottomWidth={1}
       borderBottomColor={hideShadow ? 'background' : 'shadow'}>
-      <Box width="100%" paddingRight="m">
+      <Box width="100%">
         <SearchInput
           placeholder="Search"
           autoFocus

@@ -45,8 +45,16 @@ A simple react native project that consists of:
 
 ## Notes
 
-- `Fakestoreapi` doesn't have pagination, thus no infinite scroll was implemented on the search list.
+- `Fakestoreapi` doesn't have pagination, thus no infinite scroll was implemented on home, search lists.
+- Favourites in store are in `Object` structure instead of `Array` to make faster the check weather a product is or not favourite
+  - Right now the Favourites screen is getting the object and creates a list of products to render.
+  - This will not have a correct sort every time for the list of favourites.
+  - Nevertheless, the `Object` is the way to go, because in a real life application we are going to get the list of favourites from the server, which is going to be sorted.
+  - Thus, right now we are utilizing the Favourites slice `Object` in 2 ways
+    - mark a product in whatever list, as favourite
+    - get favourite list (unsorted)
 - Tested on iOS devices.
+- Requests are not working on android when running the app in dev. [Axios issue](https://github.com/axios/axios/issues/5366)
 
 ## Environment
 ```shell

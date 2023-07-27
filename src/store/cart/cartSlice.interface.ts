@@ -1,7 +1,7 @@
 import { IEntity } from '~interfaces/entity.interface';
 
 export interface ICartState {
-  cart: Record<number, IProductInCart>;
+  cart: IProductInCart[];
 }
 
 export interface ICartSlice {
@@ -14,10 +14,6 @@ export interface IProductInCart {
   index: number;
 }
 
-export interface ICartInState {
-  [key: number]: IProductInCart;
-}
-
 export interface SetCartPayload {
-  cart: Record<number, IProductInCart>;
+  cart: IProductInCart[];
 }

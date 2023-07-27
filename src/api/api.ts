@@ -6,10 +6,12 @@ import en from '~translations/en.json';
 
 export const api = axios.create({
   baseURL: Config.API_URL,
+  responseType: 'json',
 });
 
 export const apiRQ = axios.create({
   baseURL: Config.API_URL,
+  responseType: 'json',
 });
 
 api.interceptors.request.use(onFulfilled, onRejected);
