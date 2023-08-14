@@ -3,6 +3,7 @@ export * from './atoms/Box';
 export * from './atoms/Text';
 export * from './loaders/OverlayLoader';
 export * from './atoms/SafeAreaView';
+export * from './atoms/Button';
 export { default as ImageWithFallback } from './atoms/ImageWithFallback';
 export { default as Icon } from './atoms/Icon';
 export { default as Touchable } from './atoms/Touchable';

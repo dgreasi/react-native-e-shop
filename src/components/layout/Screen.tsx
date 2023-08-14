@@ -12,7 +12,14 @@ interface Props {
   background?: PALETTE;
 }
 
-export const Screen = ({ children, full, testID, paddingTop, barStyle, background = 'background' }: Props) => {
+export const Screen = ({
+  children,
+  full,
+  testID,
+  paddingTop,
+  barStyle,
+  background = PALETTE.BACKGROUND_DEFAULT,
+}: Props) => {
   return (
     <Box
       flex={1}
