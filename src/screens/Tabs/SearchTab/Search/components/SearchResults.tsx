@@ -1,8 +1,7 @@
 import React from 'react';
-import { Box } from '~components';
+import { Box, EntityList } from '~components';
 import { useHeaderHeight } from '~hooks';
 import { Dimensions } from 'react-native';
-import EntityList from '~components/molecules/EntityList';
 
 const { height } = Dimensions.get('screen');
 

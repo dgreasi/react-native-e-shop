@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Box, Text } from '~components';
-import { Screen } from '~components/layout/Screen';
+import { Box, Screen, Text } from '~components';
 import EntityHeader from '~screens/Entity/components/EntityHeader';
 import { StyleSheet } from 'react-native';
 

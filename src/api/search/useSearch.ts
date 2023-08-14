@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query';
-import { getEntitiesService } from '~services/entity.service';
 import { IEntity } from '~interfaces/entity.interface';
+import { getEntitiesService } from '~api/entity/entity.service';
 
 const getEntitiesSearchScreenService = async (search: string): Promise<IEntity[]> => {
   if (!search) return [];

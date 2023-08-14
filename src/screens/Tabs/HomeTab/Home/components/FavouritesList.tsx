@@ -2,11 +2,10 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import theme from '~theme/theme';
 import { useSelector } from 'react-redux';
 import { FlatList, StyleSheet } from 'react-native';
-import { Box, Text } from '~components';
+import { Box, EntityCard, Text } from '~components';
 import { selectFavourites } from '~store/favourites/favouritesSlice';
 import { FULL_HEIGHT } from '~config/constants';
 import { IEntity } from '~interfaces/entity.interface';
-import EntityCard from '~components/molecules/EntityCard';
 
 interface IRender {
   item: IEntity;

@@ -8,7 +8,7 @@ interface Props {
   byPassState?: boolean;
 }
 
-export const OverlayLoader = ({ byPassState }: Props) => {
+const OverlayLoader = ({ byPassState }: Props) => {
   const loading = useSelector(selectCoreLoading);
 
   if (byPassState || loading) {
@@ -21,6 +21,8 @@ export const OverlayLoader = ({ byPassState }: Props) => {
 
   return null;
 };
+
+export default OverlayLoader;
 
 const style = StyleSheet.create({
   container: {

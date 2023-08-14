@@ -10,7 +10,7 @@ interface Props {
   barStyle?: StatusBarStyle;
 }
 
-export const Screen = ({ children, full, testID, paddingTop, barStyle }: Props) => {
+const Screen = ({ children, full, testID, paddingTop, barStyle }: Props) => {
   return (
     <Box
       flex={1}
@@ -24,3 +24,5 @@ export const Screen = ({ children, full, testID, paddingTop, barStyle }: Props) 
     </Box>
   );
 };
+
+export default Screen;
