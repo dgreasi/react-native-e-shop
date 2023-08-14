@@ -17,7 +17,7 @@ export const ProceedToCheckoutButton = () => {
   const [label, setLabel] = useState<string>('Proceed to checkout');
 
   useEffect(() => {
-    const total = cart.reduce((acc, cur) => {
+    const total = cart?.reduce((acc, cur) => {
       return acc + cur.entity.price * cur.quantity;
     }, 0);
     setSubTotal(total);

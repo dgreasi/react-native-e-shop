@@ -1,0 +1,44 @@
+{
+  "ERRORS": {
+    "SOMETHING_WENT_WRONG": "Oops, something went wrong",
+    "UNAUTHORIZED": "This function is unavailable",
+    "NO_INTERNET": "Please check your internet connection and try again",
+    "SOMETHING_WENT_WRONG_CONTACT_ADMIN": "Something went wrong. Please contact with us."
+  },
+  "CALENDAR": {
+    "SCHEDULE_CALL": "Ραντεβού",
+    "JANUARY": "Ιανουάριος",
+    "FEBRUARY": "Φεβρουάριος",
+    "MARCH": "Μάρτιος",
+    "APRIL": "Απρίλιος",
+    "MAY": "Μάϊος",
+    "JUNE": "Ιούνιος",
+    "JULY": "Ιούλιος",
+    "AUGUST": "Αύγουστος",
+    "SEPTEMBER": "Σεπτέμβριος",
+    "OCTOBER": "Οκτώβριος",
+    "NOVEMBER": "Νοέμβριος",
+    "DECEMBER": "Δεκέμβριος",
+    "SUNDAY": "Κυριακή",
+    "MONDAY": "Δευτέρα",
+    "TUESDAY": "Τρίτη",
+    "WEDNESDAY": "Τετάρτη",
+    "THURSDAY": "Πέμπτη",
+    "FRIDAY": "Παρασκευή",
+    "SATURDAY": "Σάββατο"
+  },
+  "SCHEDULE": {
+    "BOOK": "Κράτηση",
+    "TRY_AGAIN": "Προσπάθησε ξανά",
+    "WARNING": "Προειδοποίηση",
+    "SUCCESS": "Επιτυχία!",
+    "SCHEDULE_SUCCESS": "Η κράτηση σας για βιντεοκλήση καταχωρήθηκε με επιτυχία.",
+    "DONE": "Συνέχεια",
+    "SCHEDULE_WARNING": "Έχεις ήδη ένα ραντεβού με αυτό το κατάστημα για {{appointmentDateString}}. Πάτα 'Κράτηση' για να ακυρώσεις το προηγούμενο ραντεβού και να κλείσεις το νέο.",
+    "OOOPS": "Οοοπς!",
+    "BOOKINGS": "Κρατήσεις",
+    "TEAM": "Ομαδικό",
+    "PERSONAL": "Ατομικό",
+    "FRIENDS": "Φίλοι"
+  }
+}

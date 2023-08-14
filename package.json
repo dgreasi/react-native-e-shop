@@ -29,6 +29,7 @@
     ]
   },
   "dependencies": {
+    "@gorhom/bottom-sheet": "^4.4.7",
     "@react-native-async-storage/async-storage": "^1.17.7",
     "@react-native-community/netinfo": "^9.3.0",
     "@react-navigation/bottom-tabs": "^6.5.8",
@@ -38,8 +39,10 @@
     "@reduxjs/toolkit": "^1.8.2",
     "@shopify/restyle": "^2.1.0",
     "axios": "^1.4.0",
+    "i18next": "^23.4.4",
     "lodash.debounce": "^4.0.8",
     "react": "18.2.0",
+    "react-i18next": "^13.0.3",
     "react-native": "0.72.3",
     "react-native-config": "^1.5.1",
     "react-native-device-info": "^9.0.2",

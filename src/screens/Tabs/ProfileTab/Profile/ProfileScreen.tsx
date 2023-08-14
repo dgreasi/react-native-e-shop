@@ -1,11 +1,16 @@
 import * as React from 'react';
-import { Text } from '~components';
+import { MAIN_ROUTES } from '~navigation/Main/mainTypes';
+import { Box, Button } from '~components';
 
-const ProfileScreen = () => {
+const ProfileScreen = ({ navigation }: any) => {
+  const navigateToCalendar = () => {
+    navigation.push(MAIN_ROUTES.SCHEDULE);
+  };
+
   return (
-    <Text variant="oswald" textAlign="center">
-      Nothing to see here yet
-    </Text>
+    <Box paddingHorizontal="m" justifyContent="center" alignItems="center" flex={1}>
+      <Button onPress={navigateToCalendar} label="Open calendar" />
+    </Box>
   );
 };
 
