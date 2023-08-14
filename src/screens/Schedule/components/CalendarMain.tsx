@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { BottomSheetModal, BottomSheetModalProvider } from '@gorhom/bottom-sheet';
+import { BottomSheetModal } from '@gorhom/bottom-sheet';
 import { useBookedSchedule, useRescheduleBookedSchedule, useSchedule } from '~api/schedule/useSchedule';
 import { IAddScheduleAppointmentBody, IAddScheduleCallDTO } from '~interfaces/dto/schedule.dto';
 import { ALERT_TYPE } from '~components/molecules/ScheduleAlert';
 import ErrorEmpty from '~components/molecules/ErrorEmpty';
-import { Screen } from '~components/layout/Screen';
-import theme, { PALETTE } from '~theme/theme';
+import theme from '~theme/theme';
 import { Box, Button, OverlayLoader, Text } from '~components';
 import { ActivityIndicator, RefreshControl, ScrollView } from 'react-native';
 import CalendarSchedule from '~screens/Schedule/components/CalendarSchedule';
@@ -168,40 +167,38 @@ export const CalendarMain = () => {
   }
 
   return (
-    <BottomSheetModalProvider>
-      <Screen full background={PALETTE.WHITE}>
-        {isLoading ? (
-          <Box flex={1} alignItems="center" justifyContent="center">
-            <ActivityIndicator color={theme.colors.primary900} size="large" />
-          </Box>
-        ) : (
-          <ScrollView
-            contentContainerStyle={{
-              paddingBottom: theme.spacing.m,
-            }}
-            refreshControl={
-              <RefreshControl
-                refreshing={isRefetchingByUser}
-                onRefresh={refetchByUser}
-                tintColor={theme.colors.primary900}
-              />
-            }>
-            <CalendarSchedule
-              availableDates={availableDates}
-              setDateOfAppointment={setDateOfAppointment}
-              scheduledAppointment={bookedData}
+    <>
+      {isLoading ? (
+        <Box flex={1} alignItems="center" justifyContent="center">
+          <ActivityIndicator color={theme.colors.primary900} size="large" />
+        </Box>
+      ) : (
+        <ScrollView
+          contentContainerStyle={{
+            paddingBottom: theme.spacing.m,
+          }}
+          refreshControl={
+            <RefreshControl
+              refreshing={isRefetchingByUser}
+              onRefresh={refetchByUser}
+              tintColor={theme.colors.primary900}
             />
-            <Box alignItems="center" justifyContent="center" marginTop="l">
-              <Button onPress={createAppointment} width="50%">
-                <Text variant="headline" color="white">
-                  {t('SCHEDULE.BOOK')}
-                </Text>
-              </Button>
-            </Box>
-          </ScrollView>
-        )}
-      </Screen>
+          }>
+          <CalendarSchedule
+            availableDates={availableDates}
+            setDateOfAppointment={setDateOfAppointment}
+            scheduledAppointment={bookedData}
+          />
+          <Box alignItems="center" justifyContent="center" marginTop="l">
+            <Button onPress={createAppointment} width="50%">
+              <Text variant="headline" color="white">
+                {t('SCHEDULE.BOOK')}
+              </Text>
+            </Button>
+          </Box>
+        </ScrollView>
+      )}
       {isLoadingReschedule && <OverlayLoader byPassState />}
-    </BottomSheetModalProvider>
+    </>
   );
 };
