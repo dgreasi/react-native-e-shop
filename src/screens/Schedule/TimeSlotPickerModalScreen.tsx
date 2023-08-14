@@ -25,7 +25,7 @@ const friends: any[] = [];
  * @param navigation
  * @constructor
  */
-const ScheduleScreen = ({ route, navigation }: StackNavigationProps<MainRoutes, 'Schedule'>) => {
+const TimeSlotPickerModalScreen = ({ route, navigation }: StackNavigationProps<MainRoutes, 'TimeSlotPickerModal'>) => {
   const { t } = useTranslation();
   const scheduleModal = useRef<BottomSheetModal>(null);
 
@@ -220,4 +220,4 @@ const ScheduleScreen = ({ route, navigation }: StackNavigationProps<MainRoutes, 
   );
 };
 
-export default ScheduleScreen;
+export default TimeSlotPickerModalScreen;
