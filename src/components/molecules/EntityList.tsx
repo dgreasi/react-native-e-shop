@@ -1,9 +1,8 @@
 import React, { useCallback } from 'react';
-import { BasicLoader, Box, EntityCard, Text } from '~components';
+import { BasicLoader, Box, EntityCard, ErrorEmpty, Text } from '~components';
 import { useSearch } from '~api/search/useSearch';
 import { FlatList, RefreshControl, StyleSheet } from 'react-native';
 import theme from '~theme/theme';
-import ErrorEmpty from '~components/molecules/ErrorEmpty';
 import { IEntity } from '~interfaces/entity.interface';
 
 interface IRender {

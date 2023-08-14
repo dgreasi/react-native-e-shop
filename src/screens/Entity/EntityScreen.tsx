@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { BasicLoader, Box, ImageWithFallback } from '~components';
+import { BasicLoader, Box, ErrorEmpty, ImageWithFallback, Screen } from '~components';
 import { ScrollView, StyleSheet } from 'react-native';
 import { ENTITY_HEIGHT, ENTITY_WIDTH } from '~config/constants';
-import { Screen } from '~components/layout/Screen';
 import { StackNavigationProps } from '~navigation/navigation.interface';
 import { MainRoutes } from '~navigation/Main/mainTypes';
 import { useEntity } from '~api/entity/useEntity';
 import { IEntity } from '~interfaces/entity.interface';
-import ErrorEmpty from '~components/molecules/ErrorEmpty';
 import EntityHeader from '~screens/Entity/components/EntityHeader';
 import EntitySheetDetails from '~screens/Entity/components/EntitySheetDetails';
 

@@ -1,6 +1,6 @@
 import { IUseEntity } from '~api/entity/entityResponses';
 import { useQuery } from 'react-query';
-import { getEntityService } from '~services/entity.service';
+import { getEntityService } from '~api/entity/entity.service';
 
 const getEntityScreenService = async (id: string): Promise<IUseEntity> => {
   const entity = await getEntityService(id);

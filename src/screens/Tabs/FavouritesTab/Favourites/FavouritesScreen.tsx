@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Box } from '~components';
+import { Box, Screen } from '~components';
 import FavouritesList from '~screens/Tabs/HomeTab/Home/components/FavouritesList';
-import { Screen } from '~components/layout/Screen';
 
 const FavouritesScreen = () => {
   return (

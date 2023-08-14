@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getFavouritesAsync } from '~store/favourites/favouritesSlice';
-import { Screen } from '~components/layout/Screen';
 import SearchResults from '~screens/Tabs/SearchTab/Search/components/SearchResults';
 import { getCartAsync } from '~store/cart/cartSlice';
-import { Box } from '~components';
+import { Box, Screen } from '~components';
 
 const HomeScreen = () => {
   const dispatch = useDispatch();

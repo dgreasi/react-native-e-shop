@@ -17,7 +17,7 @@ export const ScreenHeader = ({ noShadow, options }: Props) => {
   const { height } = useHeaderHeight();
 
   if (!options.title) {
-    return <Box height={(height+5) / 2}></Box>;
+    return <Box height={(height + 5) / 2}></Box>;
   }
 
   return (

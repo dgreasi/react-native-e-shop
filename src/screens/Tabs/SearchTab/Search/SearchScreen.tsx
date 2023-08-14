@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { StackNavigationProps } from '~navigation/navigation.interface';
-import { Screen } from '~components/layout/Screen';
 import { useMount } from '~hooks';
 import SearchPageHeader from '~screens/Tabs/SearchTab/Search/components/SearchPageHeader';
 import SearchResults from '~screens/Tabs/SearchTab/Search/components/SearchResults';
 import { Keyboard } from 'react-native';
 import SearchRecents from '~screens/Tabs/SearchTab/Search/components/SearchRecents';
 import { SearchRoutes } from '~navigation/Search/searchTypes';
+import { Screen } from '~components';
 
 const SearchScreen = ({ navigation }: StackNavigationProps<SearchRoutes, 'Search'>) => {
   const ready = useMount(navigation);
