@@ -48,7 +48,6 @@ export const getFavouritesAsync =
   async (dispatch: AppDispatch): Promise<void> => {
     dispatch(setCoreLoading({ value: true }));
 
-    // Get new posts
     const resp = await getFavouritesService();
 
     // Dispatch actions together to prevent unneeded re-renders
