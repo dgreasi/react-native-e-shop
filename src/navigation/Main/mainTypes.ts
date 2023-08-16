@@ -3,7 +3,8 @@ export enum MAIN_ROUTES {
   ENTITY = 'Entity',
   CHECKOUT = 'Checkout',
   TIME_SLOT_PICKER_MODAL = 'TimeSlotPickerModal',
-  TIME_SLOT_PICKER = 'TimeSlotPicker',
+  TIME_SLOT_PICKER_EXAMPLE = 'TimeSlotPickerExample',
+  TIME_SLOT_PICKER_COMPONENT_ONLY = 'TimeSlotPickerComponentOnly',
 }
 
 export type MainRoutes = {
@@ -11,5 +12,6 @@ export type MainRoutes = {
   Entity: { id: string };
   Checkout: undefined;
   TimeSlotPickerModal: undefined;
-  TimeSlotPicker: undefined;
+  TimeSlotPickerExample: undefined;
+  TimeSlotPickerComponentOnly: undefined;
 };

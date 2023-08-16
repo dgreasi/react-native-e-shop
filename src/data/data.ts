@@ -26,6 +26,54 @@ export const monthNames = [
   'CALENDAR.DECEMBER',
 ];
 
+const getNextDays = (daysToAdd: number, currentDate = new Date()) => {
+  const nextDate = new Date(currentDate);
+  nextDate.setDate(currentDate.getDate() + daysToAdd);
+  return nextDate;
+};
+
+// TODO: use loop to create default available dates array
+
+const getDummyAvailableDates = () => {
+  const dates = [];
+
+  for (let i = 0; i < 20; i++) {
+    const day = {
+      day: getNextDays(i).getDate(),
+      slotDate: getNextDays(i).toDateString(),
+      slotTimes: [
+        '10:00-11:00',
+        '11:00-12:00',
+        '14:00-15:00',
+        '15:00-16:00',
+        '16:00-17:00',
+        '17:00-17:30',
+        '17:30-18:00',
+        '18:00-18:45',
+      ],
+    };
+    dates.push(day);
+  }
+
+  // Change slot time in one day
+  dates[1].slotTimes = ['10:00-11:00', '11:00-12:00', '14:00-15:00'];
+  // Create days with no availability
+  dates[4].slotTimes = [];
+  dates[10].slotTimes = [];
+
+  return dates;
+};
+
+export const availableDates: IAvailableDates[] = getDummyAvailableDates();
+
+export const bookedData = {
+  appointmentDate: getNextDays(2).toDateString(),
+  appointmentTime: availableDates?.[0].slotTimes?.[2] || '11:00-12:00',
+  roomID: '',
+  shopID: 1,
+  isMine: true,
+};
+
 export const products: IEntity[] = [
   {
     id: 1,
@@ -225,98 +273,5 @@ export const products: IEntity[] = [
     category: "women's clothing",
     image: 'https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg',
     rating: { rate: 3.6, count: 145 },
-  },
-];
-
-const getNextDays = (daysToAdd: number, currentDate = new Date()) => {
-  const nextDate = new Date(currentDate);
-  nextDate.setDate(currentDate.getDate() + daysToAdd);
-  return nextDate;
-};
-
-export const availableDates: IAvailableDates[] = [
-  {
-    day: getNextDays(0).getDate(),
-    slotDate: getNextDays(0).toDateString(),
-    slotTimes: [
-      '10:00-11:00',
-      '11:00-12:00',
-      '14:00-15:00',
-      '15:00-16:00',
-      '16:00-17:00',
-      '17:00-17:30',
-      '17:30-18:00',
-      '18:00-18:45',
-    ],
-  },
-  {
-    day: getNextDays(1).getDate(),
-    slotDate: getNextDays(1).toDateString(),
-    slotTimes: ['10:00-11:00', '11:00-12:00', '14:00-15:00'],
-  },
-  {
-    day: getNextDays(2).getDate(),
-    slotDate: getNextDays(2).toDateString(),
-    slotTimes: ['10:00-11:00', '11:00-12:00', '14:00-15:00'],
-  },
-  {
-    day: getNextDays(3).getDate(),
-    slotDate: getNextDays(3).toDateString(),
-    slotTimes: ['10:00-11:00', '11:00-12:00', '14:00-15:00'],
-  },
-  {
-    day: getNextDays(4).getDate(),
-    slotDate: getNextDays(4).toDateString(),
-    slotTimes: ['10:00-11:00', '11:00-12:00', '14:00-15:00'],
-  },
-  {
-    day: getNextDays(5).getDate(),
-    slotDate: getNextDays(5).toDateString(),
-    slotTimes: ['10:00-11:00', '11:00-12:00', '14:00-15:00'],
-  },
-  {
-    day: getNextDays(6).getDate(),
-    slotDate: getNextDays(6).toDateString(),
-    slotTimes: ['10:00-11:00', '11:00-12:00', '14:00-15:00'],
-  },
-  {
-    day: getNextDays(7).getDate(),
-    slotDate: getNextDays(7).toDateString(),
-    slotTimes: ['10:00-11:00', '11:00-12:00', '14:00-15:00'],
-  },
-  {
-    day: getNextDays(8).getDate(),
-    slotDate: getNextDays(8).toDateString(),
-    slotTimes: ['10:00-11:00', '11:00-12:00', '14:00-15:00'],
-  },
-  {
-    day: getNextDays(9).getDate(),
-    slotDate: getNextDays(9).toDateString(),
-    slotTimes: ['10:00-11:00', '11:00-12:00', '14:00-15:00'],
-  },
-  {
-    day: getNextDays(10).getDate(),
-    slotDate: getNextDays(10).toDateString(),
-    slotTimes: [],
-  },
-  {
-    day: getNextDays(11).getDate(),
-    slotDate: getNextDays(11).toDateString(),
-    slotTimes: ['10:00-11:00', '11:00-12:00', '14:00-15:00'],
-  },
-  {
-    day: getNextDays(12).getDate(),
-    slotDate: getNextDays(12).toDateString(),
-    slotTimes: ['10:00-11:00', '11:00-12:00', '14:00-15:00'],
-  },
-  {
-    day: getNextDays(13).getDate(),
-    slotDate: getNextDays(13).toDateString(),
-    slotTimes: ['10:00-11:00', '11:00-12:00', '14:00-15:00'],
-  },
-  {
-    day: getNextDays(14).getDate(),
-    slotDate: getNextDays(14).toDateString(),
-    slotTimes: ['10:00-11:00', '11:00-12:00', '14:00-15:00'],
   },
 ];

@@ -9,11 +9,10 @@ import { useBookedSchedule, useRescheduleBookedSchedule, useSchedule } from '~ap
 import { useRefreshByUser } from '~hooks/useRefetchByUser';
 import { useTranslation } from 'react-i18next';
 import ErrorEmpty from '~components/molecules/ErrorEmpty';
-import { Screen } from '~components/layout/Screen';
-import { Box, Button, ModalHeader, OverlayLoader, ScheduleAlert, Text } from '~components';
+import { Box, Button, ModalHeader, OverlayLoader, ScheduleAlert, Screen, Text } from '~components';
 import { ActivityIndicator, RefreshControl, ScrollView } from 'react-native';
 import theme, { PALETTE } from '~theme/theme';
-import CalendarSchedule from '~screens/Schedule/components/CalendarSchedule';
+import CalendarSchedule from '~screens/Schedule/TimeSlotPicker/components/CalendarSchedule';
 
 const userID = 1;
 const shopID = 1;

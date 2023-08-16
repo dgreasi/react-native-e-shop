@@ -4,13 +4,13 @@ import { useTranslation } from 'react-i18next';
 import { BottomSheetModal } from '@gorhom/bottom-sheet';
 import { useBookedSchedule, useRescheduleBookedSchedule, useSchedule } from '~api/schedule/useSchedule';
 import { IAddScheduleAppointmentBody, IAddScheduleCallDTO } from '~interfaces/dto/schedule.dto';
-import { ALERT_TYPE } from '~components/molecules/ScheduleAlert';
 import ErrorEmpty from '~components/molecules/ErrorEmpty';
 import theme from '~theme/theme';
 import { Box, Button, OverlayLoader, Text } from '~components';
 import { ActivityIndicator, RefreshControl, ScrollView } from 'react-native';
-import CalendarSchedule from '~screens/Schedule/components/CalendarSchedule';
+import CalendarSchedule from '~screens/Schedule/TimeSlotPicker/components/CalendarSchedule';
 import { useRefreshByUser } from '~hooks/useRefetchByUser';
+import AppointmentSchedule from '~screens/Schedule/AppointmentSchedule/AppointmentSchedule';
 
 const userID = 1;
 const shopID = 1;
@@ -41,12 +41,12 @@ export const CalendarMain = () => {
   const [dateOfAppointment, setDateOfAppointment] = useState<IAddScheduleAppointmentBody | null>(null);
 
   // Schedule Alert data
-  const [title, setTitle] = useState<string>('');
-  const [description, setDescription] = useState<string>('');
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  const [action, setAction] = useState<any>(() => {});
-  const [showCancelBtn, setShowCancelBtn] = useState<boolean>(true);
-  const [successBtnLabel, setSuccessBtnLabel] = useState<ALERT_TYPE>(ALERT_TYPE.BOOK);
+  // const [title, setTitle] = useState<string>('');
+  // const [description, setDescription] = useState<string>('');
+  // // eslint-disable-next-line @typescript-eslint/no-empty-function
+  // const [action, setAction] = useState<any>(() => {});
+  // const [showCancelBtn, setShowCancelBtn] = useState<boolean>(true);
+  // const [successBtnLabel, setSuccessBtnLabel] = useState<ALERT_TYPE>(ALERT_TYPE.BOOK);
 
   const dismissScheduleAlert = () => {
     scheduleModal?.current?.dismiss();
@@ -63,11 +63,11 @@ export const CalendarMain = () => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         const errorMessage = `${errorReschedule?.response?.data?.error}` || 'FAIL_TO_NOTIFY';
-        setTitle('OOOPS');
-        setDescription(t(`ERRORS.${errorMessage}`));
-        setAction(() => dismissScheduleAlert);
-        setShowCancelBtn(false);
-        setSuccessBtnLabel(ALERT_TYPE.TRY_AGAIN);
+        // setTitle('OOOPS');
+        // setDescription(t(`ERRORS.${errorMessage}`));
+        // setAction(() => dismissScheduleAlert);
+        // setShowCancelBtn(false);
+        // setSuccessBtnLabel(ALERT_TYPE.TRY_AGAIN);
         scheduleModal?.current?.present();
       }, 50);
     }
@@ -90,12 +90,12 @@ export const CalendarMain = () => {
 
   // Set schedule alert data for reschedule
   const setRescheduleAlertData = () => {
-    setTitle('WARNING');
+    // setTitle('WARNING');
     const localDate = new Date(bookedData?.appointmentDate || '').toLocaleDateString();
     const appointmentDateString = `${bookedData?.appointmentTime}, ${localDate}`;
-    setDescription(t('SCHEDULE.SCHEDULE_WARNING', { appointmentDateString }));
-    setAction(() => rescheduleAppointment);
-    setSuccessBtnLabel(ALERT_TYPE.BOOK);
+    // setDescription(t('SCHEDULE.SCHEDULE_WARNING', { appointmentDateString }));
+    // setAction(() => rescheduleAppointment);
+    // setSuccessBtnLabel(ALERT_TYPE.BOOK);
   };
 
   const navigateShop = () => {
@@ -107,11 +107,11 @@ export const CalendarMain = () => {
   // Set schedule alert data for success
   const setSuccessAlertData = () => {
     scheduleModal?.current?.dismiss();
-    setTitle('SUCCESS');
-    setDescription(t('SCHEDULE.SCHEDULE_SUCCESS'));
-    setAction(() => navigateShop);
-    setShowCancelBtn(false);
-    setSuccessBtnLabel(ALERT_TYPE.DONE);
+    // setTitle('SUCCESS');
+    // setDescription(t('SCHEDULE.SCHEDULE_SUCCESS'));
+    // setAction(() => navigateShop);
+    // setShowCancelBtn(false);
+    // setSuccessBtnLabel(ALERT_TYPE.DONE);
     scheduleModal?.current?.present();
   };
 
@@ -184,10 +184,13 @@ export const CalendarMain = () => {
               tintColor={theme.colors.primary900}
             />
           }>
-          <CalendarSchedule
+          <AppointmentSchedule
             availableDates={availableDates}
             setDateOfAppointment={setDateOfAppointment}
             scheduledAppointment={bookedData}
+            marginTop={24}
+            // datePickerBackgroundColor="#F4CC58"
+            // timeSlotsBackgroundColor="#F4CC58"
           />
           <Box alignItems="center" justifyContent="center" marginTop="l">
             <Button onPress={createAppointment} width="50%">
@@ -200,5 +203,24 @@ export const CalendarMain = () => {
       )}
       {isLoadingReschedule && <OverlayLoader byPassState />}
     </>
+  );
+
+  return (
+    <AppointmentSchedule
+      availableDates={availableDates}
+      setDateOfAppointment={setDateOfAppointment}
+      scheduledAppointment={bookedData}
+      marginTop={24}
+      // datePickerBackgroundColor="#F4CC58"
+      // timeSlotsBackgroundColor="#F4CC58"
+    />
+  );
+
+  return (
+    <CalendarSchedule
+      availableDates={availableDates}
+      setDateOfAppointment={setDateOfAppointment}
+      scheduledAppointment={bookedData}
+    />
   );
 };

@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { CalendarMain } from '~screens/Schedule/components/CalendarMain';
+import { CalendarMain } from '~screens/Schedule/TimeSlotPicker/CalendarMain';
 import { StackNavigationProps } from '~navigation/navigation.interface';
 import { MainRoutes } from '~navigation/Main/mainTypes';
 import { PALETTE } from '~theme/theme';
-import ScreenHeader from '../../components/organisms/ScreenHeader';
+import ScreenHeader from '../../../components/organisms/ScreenHeader';
 import { Screen } from '~components';
 
-const TimeSlotPickerScreen = ({ navigation }: StackNavigationProps<MainRoutes, 'TimeSlotPicker'>) => {
+const TimeSlotPickerExampleScreen = ({ navigation }: StackNavigationProps<MainRoutes, 'TimeSlotPickerExample'>) => {
   return (
     <Screen full background={PALETTE.WHITE}>
       <ScreenHeader navigation={navigation} options={{ title: 'Schedule appointment' }} />
@@ -15,4 +15,4 @@ const TimeSlotPickerScreen = ({ navigation }: StackNavigationProps<MainRoutes, '
   );
 };
 
-export default TimeSlotPickerScreen;
+export default TimeSlotPickerExampleScreen;
