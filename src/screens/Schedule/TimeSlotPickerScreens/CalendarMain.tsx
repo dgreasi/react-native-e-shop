@@ -8,7 +8,6 @@ import ErrorEmpty from '~components/molecules/ErrorEmpty';
 import theme from '~theme/theme';
 import { Box, Button, OverlayLoader, Text } from '~components';
 import { ActivityIndicator, RefreshControl, ScrollView } from 'react-native';
-import CalendarSchedule from '~screens/Schedule/TimeSlotPickerScreens/components/CalendarSchedule';
 import { useRefreshByUser } from '~hooks/useRefetchByUser';
 import { TimeSlotPicker } from '@dgreasi/react-native-time-slot-picker';
 
@@ -202,24 +201,5 @@ export const CalendarMain = () => {
       )}
       {isLoadingReschedule && <OverlayLoader byPassState />}
     </>
-  );
-
-  return (
-    <TimeSlotPicker
-      availableDates={availableDates}
-      setDateOfAppointment={setDateOfAppointment}
-      scheduledAppointment={bookedData}
-      marginTop={24}
-      // datePickerBackgroundColor="#F4CC58"
-      // timeSlotsBackgroundColor="#F4CC58"
-    />
-  );
-
-  return (
-    <CalendarSchedule
-      availableDates={availableDates}
-      setDateOfAppointment={setDateOfAppointment}
-      scheduledAppointment={bookedData}
-    />
   );
 };
