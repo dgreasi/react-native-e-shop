@@ -12,13 +12,19 @@ import ErrorEmpty from '~components/molecules/ErrorEmpty';
 import { Box, Button, ModalHeader, OverlayLoader, ScheduleAlert, Screen, Text } from '~components';
 import { ActivityIndicator, RefreshControl, ScrollView } from 'react-native';
 import theme, { PALETTE } from '~theme/theme';
-import CalendarSchedule from '~screens/Schedule/TimeSlotPickerScreens/components/CalendarSchedule';
+import { TimeSlotPicker } from '@dgreasi/react-native-time-slot-picker';
 
 const userID = 1;
 const shopID = 1;
 const friends: any[] = [];
 
 /**
+ * A screen with header, drag to refresh, get data functionality from API and a submit button,
+ * that uses react-native-time-slot-picker and simulates a request
+ * to get the needed data that will be displayed in the component.
+ * A `Book` button is added, with a loader when tapped, to simulate a UX example,
+ * with a success message.
+ *
  * To be used as a bottom-sheet/modal with navigation
  * @param route
  * @param navigation
@@ -191,11 +197,22 @@ const TimeSlotPickerModalScreen = ({ route, navigation }: StackNavigationProps<M
                 tintColor={theme.colors.primary900}
               />
             }>
-            <CalendarSchedule
+            {/*// TODO: check if scroll works correctly on Android*/}
+            <TimeSlotPicker
               availableDates={availableDates}
               setDateOfAppointment={setDateOfAppointment}
               scheduledAppointment={bookedData}
+              // marginTop={24}
+              // datePickerBackgroundColor="#F4CC58"
+              // timeSlotsBackgroundColor="#F4CC58"
+              mainColor={theme.colors.error300}
+              // timeSlotWidth={160}
             />
+            {/*<CalendarSchedule*/}
+            {/*  availableDates={availableDates}*/}
+            {/*  setDateOfAppointment={setDateOfAppointment}*/}
+            {/*  scheduledAppointment={bookedData}*/}
+            {/*/>*/}
             <Box alignItems="center" justifyContent="center" marginTop="l">
               <Button onPress={createAppointment} width="50%">
                 <Text variant="headline" color="white">
