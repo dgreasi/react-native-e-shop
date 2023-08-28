@@ -8,9 +8,9 @@ import ErrorEmpty from '~components/molecules/ErrorEmpty';
 import theme from '~theme/theme';
 import { Box, Button, OverlayLoader, Text } from '~components';
 import { ActivityIndicator, RefreshControl, ScrollView } from 'react-native';
-import CalendarSchedule from '~screens/Schedule/TimeSlotPicker/components/CalendarSchedule';
+import CalendarSchedule from '~screens/Schedule/TimeSlotPickerScreens/components/CalendarSchedule';
 import { useRefreshByUser } from '~hooks/useRefetchByUser';
-import TimeSlotPicker from '~screens/Schedule/AppointmentSchedule/TimeSlotPicker';
+import { TimeSlotPicker } from '@dgreasi/react-native-time-slot-picker';
 
 const userID = 1;
 const shopID = 1;
@@ -118,7 +118,7 @@ export const CalendarMain = () => {
   const createAppointment = () => {
     if (appointmentIsValid()) {
       // Already owned scheduled calendar - Cancel old one to continue
-      if (bookedData?.appointmentDate?.length && bookedData?.isMine) {
+      if (bookedData?.appointmentDate?.length) {
         setRescheduleAlertData();
         scheduleModal?.current?.present();
         return;
@@ -137,13 +137,12 @@ export const CalendarMain = () => {
 
   // Reschedule/Schedule appointment
   const rescheduleAppointment = () => {
-    const roomID = bookedData?.roomID;
-    if (roomID && appointmentIsValid()) {
+    if (appointmentIsValid()) {
       scheduleModal?.current?.dismiss();
       rescheduleBookedSchedule({
-        isMine: !!bookedData?.isMine,
+        isMine: true,
         shopID,
-        roomID,
+        roomID: '1',
         data: getAppointmentPostData(),
         onSuccess: setSuccessAlertData,
       });

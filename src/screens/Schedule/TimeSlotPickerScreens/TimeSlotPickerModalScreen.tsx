@@ -123,7 +123,7 @@ const TimeSlotPickerModalScreen = ({ route, navigation }: StackNavigationProps<M
   const createAppointment = () => {
     if (appointmentIsValid()) {
       // Already owned scheduled calendar - Cancel old one to continue
-      if (bookedData?.appointmentDate?.length && bookedData?.isMine) {
+      if (bookedData?.appointmentDate?.length) {
         setRescheduleAlertData();
         scheduleModal?.current?.present();
         return;
@@ -142,11 +142,11 @@ const TimeSlotPickerModalScreen = ({ route, navigation }: StackNavigationProps<M
 
   // Reschedule/Schedule appointment
   const rescheduleAppointment = () => {
-    const roomID = bookedData?.roomID;
+    const roomID = '1';
     if (roomID && appointmentIsValid()) {
       scheduleModal?.current?.dismiss();
       rescheduleBookedSchedule({
-        isMine: !!bookedData?.isMine,
+        isMine: true,
         shopID,
         roomID,
         data: getAppointmentPostData(),

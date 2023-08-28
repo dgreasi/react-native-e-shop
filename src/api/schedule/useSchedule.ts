@@ -34,9 +34,6 @@ const bookScheduleCallService = async (data: {
   return {
     appointmentDate: '',
     appointmentTime: '',
-    roomID: '',
-    shopID: data.shopID,
-    isMine: true,
   };
 
   // RoomID: used to cancel previous scheduled call
@@ -63,9 +60,6 @@ export const getBookedScheduleCallService = async (
   return {
     appointmentDate: '',
     appointmentTime: '',
-    roomID: '',
-    shopID: shopID,
-    isMine: true,
   };
 
   // const resp = await apiRQ.get<IGetScheduledCalendar>(`/schedule/shop/${shopID}`);

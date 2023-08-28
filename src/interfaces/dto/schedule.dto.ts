@@ -30,9 +30,6 @@ export interface IGetScheduledCalendar {
 export interface IGetScheduleCallResponse {
   appointmentDate: string;
   appointmentTime: string;
-  roomID: string;
-  shopID: number;
-  isMine: boolean;
 }
 
 export interface IAddScheduleAppointmentBody {

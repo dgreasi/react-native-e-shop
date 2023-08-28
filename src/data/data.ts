@@ -32,8 +32,6 @@ const getNextDays = (daysToAdd: number, currentDate = new Date()) => {
   return nextDate;
 };
 
-// TODO: use loop to create default available dates array
-
 const getDummyAvailableDates = () => {
   const dates = [];
 
