@@ -1,30 +1,26 @@
 import * as React from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { MainRoutes } from '~navigation/Main/mainTypes';
-import { StackNavigationProps } from '~navigation/navigation.interface';
-import { BottomSheetModal, BottomSheetModalProvider } from '@gorhom/bottom-sheet';
-import { ALERT_TYPE } from '~components/molecules/ScheduleAlert';
-import { IAddScheduleAppointmentBody, IAddScheduleCallDTO } from '~interfaces/dto/schedule.dto';
-import { useBookedSchedule, useRescheduleBookedSchedule, useSchedule } from '~api/schedule/useSchedule';
-import { useRefreshByUser } from '~hooks/useRefetchByUser';
 import { useTranslation } from 'react-i18next';
+import { BottomSheetModal } from '@gorhom/bottom-sheet';
+import { useBookedSchedule, useRescheduleBookedSchedule, useSchedule } from '~api/schedule/useSchedule';
+import { IAddScheduleAppointmentBody, IAddScheduleCallDTO } from '~interfaces/dto/schedule.dto';
 import ErrorEmpty from '~components/molecules/ErrorEmpty';
-import { Box, Button, ModalHeader, OverlayLoader, ScheduleAlert, Screen, Text } from '~components';
+import theme from '~theme/theme';
+import { Box, Button, OverlayLoader, Text } from '~components';
 import { ActivityIndicator, RefreshControl, ScrollView } from 'react-native';
-import theme, { PALETTE } from '~theme/theme';
 import CalendarSchedule from '~screens/Schedule/TimeSlotPicker/components/CalendarSchedule';
+import { useRefreshByUser } from '~hooks/useRefetchByUser';
+import TimeSlotPicker from '~screens/Schedule/AppointmentSchedule/TimeSlotPicker';
 
 const userID = 1;
 const shopID = 1;
 const friends: any[] = [];
 
 /**
- * To be used as a bottom-sheet/modal with navigation
- * @param route
- * @param navigation
+ * To be used in screen
  * @constructor
  */
-const TimeSlotPickerModalScreen = ({ route, navigation }: StackNavigationProps<MainRoutes, 'TimeSlotPickerModal'>) => {
+export const CalendarMain = () => {
   const { t } = useTranslation();
   const scheduleModal = useRef<BottomSheetModal>(null);
 
@@ -45,12 +41,12 @@ const TimeSlotPickerModalScreen = ({ route, navigation }: StackNavigationProps<M
   const [dateOfAppointment, setDateOfAppointment] = useState<IAddScheduleAppointmentBody | null>(null);
 
   // Schedule Alert data
-  const [title, setTitle] = useState<string>('');
-  const [description, setDescription] = useState<string>('');
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  const [action, setAction] = useState<any>(() => {});
-  const [showCancelBtn, setShowCancelBtn] = useState<boolean>(true);
-  const [successBtnLabel, setSuccessBtnLabel] = useState<ALERT_TYPE>(ALERT_TYPE.BOOK);
+  // const [title, setTitle] = useState<string>('');
+  // const [description, setDescription] = useState<string>('');
+  // // eslint-disable-next-line @typescript-eslint/no-empty-function
+  // const [action, setAction] = useState<any>(() => {});
+  // const [showCancelBtn, setShowCancelBtn] = useState<boolean>(true);
+  // const [successBtnLabel, setSuccessBtnLabel] = useState<ALERT_TYPE>(ALERT_TYPE.BOOK);
 
   const dismissScheduleAlert = () => {
     scheduleModal?.current?.dismiss();
@@ -67,11 +63,11 @@ const TimeSlotPickerModalScreen = ({ route, navigation }: StackNavigationProps<M
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         const errorMessage = `${errorReschedule?.response?.data?.error}` || 'FAIL_TO_NOTIFY';
-        setTitle('OOOPS');
-        setDescription(t(`ERRORS.${errorMessage}`));
-        setAction(() => dismissScheduleAlert);
-        setShowCancelBtn(false);
-        setSuccessBtnLabel(ALERT_TYPE.TRY_AGAIN);
+        // setTitle('OOOPS');
+        // setDescription(t(`ERRORS.${errorMessage}`));
+        // setAction(() => dismissScheduleAlert);
+        // setShowCancelBtn(false);
+        // setSuccessBtnLabel(ALERT_TYPE.TRY_AGAIN);
         scheduleModal?.current?.present();
       }, 50);
     }
@@ -94,29 +90,28 @@ const TimeSlotPickerModalScreen = ({ route, navigation }: StackNavigationProps<M
 
   // Set schedule alert data for reschedule
   const setRescheduleAlertData = () => {
-    setTitle('WARNING');
+    // setTitle('WARNING');
     const localDate = new Date(bookedData?.appointmentDate || '').toLocaleDateString();
     const appointmentDateString = `${bookedData?.appointmentTime}, ${localDate}`;
-    setDescription(t('SCHEDULE.SCHEDULE_WARNING', { appointmentDateString }));
-    setAction(() => rescheduleAppointment);
-    setSuccessBtnLabel(ALERT_TYPE.BOOK);
+    // setDescription(t('SCHEDULE.SCHEDULE_WARNING', { appointmentDateString }));
+    // setAction(() => rescheduleAppointment);
+    // setSuccessBtnLabel(ALERT_TYPE.BOOK);
   };
 
   const navigateShop = () => {
     // TODO: navigate to shop
     // navigation.navigate(MAIN_ROUTES.SHOP, { shopID });
     scheduleModal?.current?.dismiss();
-    navigation.goBack();
   };
 
   // Set schedule alert data for success
   const setSuccessAlertData = () => {
     scheduleModal?.current?.dismiss();
-    setTitle('SUCCESS');
-    setDescription(t('SCHEDULE.SCHEDULE_SUCCESS'));
-    setAction(() => navigateShop);
-    setShowCancelBtn(false);
-    setSuccessBtnLabel(ALERT_TYPE.DONE);
+    // setTitle('SUCCESS');
+    // setDescription(t('SCHEDULE.SCHEDULE_SUCCESS'));
+    // setAction(() => navigateShop);
+    // setShowCancelBtn(false);
+    // setSuccessBtnLabel(ALERT_TYPE.DONE);
     scheduleModal?.current?.present();
   };
 
@@ -172,51 +167,60 @@ const TimeSlotPickerModalScreen = ({ route, navigation }: StackNavigationProps<M
   }
 
   return (
-    <BottomSheetModalProvider>
-      <Screen full background={PALETTE.WHITE}>
-        <ModalHeader title={t('CALENDAR.SCHEDULE_CALL')} />
-        {isLoading ? (
-          <Box flex={1} alignItems="center" justifyContent="center">
-            <ActivityIndicator color={theme.colors.primary900} size="large" />
-          </Box>
-        ) : (
-          <ScrollView
-            contentContainerStyle={{
-              paddingBottom: theme.spacing.m,
-            }}
-            refreshControl={
-              <RefreshControl
-                refreshing={isRefetchingByUser}
-                onRefresh={refetchByUser}
-                tintColor={theme.colors.primary900}
-              />
-            }>
-            <CalendarSchedule
-              availableDates={availableDates}
-              setDateOfAppointment={setDateOfAppointment}
-              scheduledAppointment={bookedData}
+    <>
+      {isLoading ? (
+        <Box flex={1} alignItems="center" justifyContent="center">
+          <ActivityIndicator color={theme.colors.primary900} size="large" />
+        </Box>
+      ) : (
+        <ScrollView
+          contentContainerStyle={{
+            paddingBottom: theme.spacing.m,
+          }}
+          refreshControl={
+            <RefreshControl
+              refreshing={isRefetchingByUser}
+              onRefresh={refetchByUser}
+              tintColor={theme.colors.primary900}
             />
-            <Box alignItems="center" justifyContent="center" marginTop="l">
-              <Button onPress={createAppointment} width="50%">
-                <Text variant="headline" color="white">
-                  {t('SCHEDULE.BOOK')}
-                </Text>
-              </Button>
-            </Box>
-          </ScrollView>
-        )}
-      </Screen>
-      <ScheduleAlert
-        modalizeRef={scheduleModal}
-        title={title}
-        description={description}
-        onPress={action}
-        showCancelBtn={showCancelBtn}
-        successBtnLabel={successBtnLabel}
-      />
+          }>
+          <TimeSlotPicker
+            availableDates={availableDates}
+            setDateOfAppointment={setDateOfAppointment}
+            scheduledAppointment={bookedData}
+            marginTop={24}
+            // datePickerBackgroundColor="#F4CC58"
+            // timeSlotsBackgroundColor="#F4CC58"
+          />
+          <Box alignItems="center" justifyContent="center" marginTop="l">
+            <Button onPress={createAppointment} width="50%">
+              <Text variant="headline" color="white">
+                {t('SCHEDULE.BOOK')}
+              </Text>
+            </Button>
+          </Box>
+        </ScrollView>
+      )}
       {isLoadingReschedule && <OverlayLoader byPassState />}
-    </BottomSheetModalProvider>
+    </>
+  );
+
+  return (
+    <TimeSlotPicker
+      availableDates={availableDates}
+      setDateOfAppointment={setDateOfAppointment}
+      scheduledAppointment={bookedData}
+      marginTop={24}
+      // datePickerBackgroundColor="#F4CC58"
+      // timeSlotsBackgroundColor="#F4CC58"
+    />
+  );
+
+  return (
+    <CalendarSchedule
+      availableDates={availableDates}
+      setDateOfAppointment={setDateOfAppointment}
+      scheduledAppointment={bookedData}
+    />
   );
 };
-
-export default TimeSlotPickerModalScreen;

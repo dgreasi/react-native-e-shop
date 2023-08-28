@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CalendarMain } from '~screens/Schedule/TimeSlotPicker/CalendarMain';
+import { CalendarMain } from '~screens/Schedule/TimeSlotPickerScreens/CalendarMain';
 import { StackNavigationProps } from '~navigation/navigation.interface';
 import { MainRoutes } from '~navigation/Main/mainTypes';
 import { PALETTE } from '~theme/theme';
