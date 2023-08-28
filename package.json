@@ -1,6 +1,6 @@
 {
-  "name": "e-shop",
-  "version": "1.0.2",
+  "name": "react-native-e-shop",
+  "version": "1.0.3",
   "private": true,
   "scripts": {
     "start": "react-native start",
