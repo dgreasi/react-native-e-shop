@@ -26,7 +26,6 @@ export { default as ScheduleAlert } from './molecules/ScheduleAlert';
 export { default as DynamicBottomSheetModal } from './molecules/DynamicBottomSheetModal';
 export { default as RightHeaderButton } from './molecules/RightHeaderButton';
 export { default as ModalHeader } from './molecules/ModalHeader';
-export { default as CalendarDay } from './atoms/CalendarDay';
 
 // ****************************** ORGANISMS ********************************** //
 export { default as ScreenHeader } from './organisms/ScreenHeader';
