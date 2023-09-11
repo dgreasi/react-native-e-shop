@@ -791,10 +791,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@dgreasi/react-native-time-slot-picker@0.1.5":
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/@dgreasi/react-native-time-slot-picker/-/react-native-time-slot-picker-0.1.5.tgz#1bf2e63569210d0775027a51301f712a0d9f19b4"
-  integrity sha512-oESFL0ez33O5FNM3u13/EojaOIBFbfyk8uiU7o0zHjEplHVLLwEsbkkcxc8ASudfVB40Xduf1T5BYJws/4WSdQ==
+"@dgreasi/react-native-time-slot-picker@0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@dgreasi/react-native-time-slot-picker/-/react-native-time-slot-picker-0.2.0.tgz#91dbe8b6d3b4e4a260f72c0b624c4a5c814908bc"
+  integrity sha512-lwukJdcSpxT7DVxqUFTNCF3L9/StVpUaeE8YbS/8c7pYk/PG1IfKVTo8MaRSSmP+KGZSHgwHBXQnD5qMuPZz0A==
 
 "@egjs/hammerjs@^2.0.17":
   version "2.0.17"

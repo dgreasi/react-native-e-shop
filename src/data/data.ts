@@ -37,8 +37,7 @@ const getDummyAvailableDates = () => {
 
   for (let i = 0; i < 20; i++) {
     const day = {
-      day: getNextDays(i).getDate(),
-      slotDate: getNextDays(i).toDateString(),
+      date: getNextDays(i).toISOString(),
       slotTimes: [
         '10:00-11:00',
         '11:00-12:00',
@@ -65,7 +64,7 @@ const getDummyAvailableDates = () => {
 export const availableDates: IAvailableDates[] = getDummyAvailableDates();
 
 export const bookedData = {
-  appointmentDate: getNextDays(2).toDateString(),
+  appointmentDate: getNextDays(2).toISOString(),
   appointmentTime: availableDates?.[0].slotTimes?.[2] || '11:00-12:00',
   roomID: '',
   shopID: 1,

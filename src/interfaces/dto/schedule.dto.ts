@@ -7,8 +7,7 @@ export interface IAddScheduleAppointmentBody {
 }
 
 export interface IAvailableDates {
-  day: number;
-  slotDate: string;
+  date: string; // new Date().toISOString()
   slotTimes: string[];
 }
 
