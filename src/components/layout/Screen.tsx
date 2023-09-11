@@ -1,6 +1,7 @@
 import React from 'react';
 import { StatusBar, StatusBarStyle } from 'react-native';
 import { Box } from '~components';
+import { PALETTE } from '~theme/theme';
 
 interface Props {
   children: React.ReactNode;
@@ -8,13 +9,21 @@ interface Props {
   testID?: string;
   paddingTop?: number;
   barStyle?: StatusBarStyle;
+  background?: PALETTE;
 }
 
-const Screen = ({ children, full, testID, paddingTop, barStyle }: Props) => {
+export const Screen = ({
+  children,
+  full,
+  testID,
+  paddingTop,
+  barStyle,
+  background = PALETTE.BACKGROUND_DEFAULT,
+}: Props) => {
   return (
     <Box
       flex={1}
-      bg="background"
+      bg={background}
       testID={testID}
       flexDirection="column"
       paddingHorizontal={full ? undefined : 'm'}

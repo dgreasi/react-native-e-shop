@@ -4,12 +4,21 @@ All notable changes to this project will be documented in this file.
 
 ## [TODOS]
 
+- (**ANDROID**) Fix `axios` network timeout error ([Issue](https://github.com/axios/axios/issues/5366)).
 - (**RN**) Add fast-image for better loading time in lists with images.
-- (**RN**) Add favourite button in each entity card.
-- (**RN**) Update reanimated lib when bug is fixed on android.
-  - Issue: https://github.com/software-mansion/react-native-reanimated/issues/2906
-- (**RN**) Install @gorhom/bottom-sheet to use actions bottom sheet.
-- (**RN**) Add react-native-gesture-handler to use RectButton.
+
+## [1.0.3]
+
+### Features
+
+- (**RN**) Add screens to show examples of scheduling an appointment.
+- (**RN**) Create dummy hooks to get data for calendar.
+- (**RN**) Add mechanism of translations.
+- (**RN**) Create extra screen to use only the `@dgreasi/react-native-time-slot-picker` lib.
+- (**RN**) Re-structure folder structure.
+- (**RN**) Remove unused props from interface.
+- (**RN**) Add `react-native-gesture-handler`.
+- (**RN**) Add `@dgreasi/react-native-time-slot-picker` and use instead of local component.
 
 ## [1.0.2]
 

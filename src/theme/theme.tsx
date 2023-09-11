@@ -21,6 +21,7 @@ export enum PALETTE {
   WARNING_100 = 'warning100',
   SUCCESS_300 = 'success300',
   BUTTON_SECONDARY = 'buttonSecondary',
+  BACKGROUND_DEFAULT = 'background',
 }
 
 export const WEIGHT = {

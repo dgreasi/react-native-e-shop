@@ -3,6 +3,7 @@ export * from './atoms/Box';
 export * from './atoms/Text';
 export * from './loaders/OverlayLoader';
 export * from './atoms/SafeAreaView';
+export * from './atoms/Button';
 export { default as ImageWithFallback } from './atoms/ImageWithFallback';
 export { default as Icon } from './atoms/Icon';
 export { default as Touchable } from './atoms/Touchable';
@@ -21,6 +22,10 @@ export { default as FavouriteButton } from './molecules/FavouriteButton';
 export { default as SearchButton } from './molecules/SearchButton';
 export { default as SearchInput } from './molecules/SearchInput';
 export { default as ToastMessage } from './molecules/ToastMessage';
+export { default as ScheduleAlert } from './molecules/ScheduleAlert';
+export { default as DynamicBottomSheetModal } from './molecules/DynamicBottomSheetModal';
+export { default as RightHeaderButton } from './molecules/RightHeaderButton';
+export { default as ModalHeader } from './molecules/ModalHeader';
 
 // ****************************** ORGANISMS ********************************** //
 export { default as ScreenHeader } from './organisms/ScreenHeader';

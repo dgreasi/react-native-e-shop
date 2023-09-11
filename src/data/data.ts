@@ -1,4 +1,50 @@
 import { IEntity } from '~interfaces/entity.interface';
+import { IAvailableDates } from '~interfaces/dto/schedule.dto';
+
+const getNextDays = (daysToAdd: number, currentDate = new Date()) => {
+  const nextDate = new Date(currentDate);
+  nextDate.setDate(currentDate.getDate() + daysToAdd);
+  return nextDate;
+};
+
+const getDummyAvailableDates = () => {
+  const dates = [];
+
+  for (let i = 0; i < 20; i++) {
+    const day = {
+      date: getNextDays(i).toISOString(),
+      slotTimes: [
+        '10:00-11:00',
+        '11:00-12:00',
+        '14:00-15:00',
+        '15:00-16:00',
+        '16:00-17:00',
+        '17:00-17:30',
+        '17:30-18:00',
+        '18:00-18:45',
+      ],
+    };
+    dates.push(day);
+  }
+
+  // Change slot time in one day
+  dates[1].slotTimes = ['10:00-11:00', '11:00-12:00', '14:00-15:00'];
+  // Create days with no availability
+  dates[4].slotTimes = [];
+  dates[10].slotTimes = [];
+
+  return dates;
+};
+
+export const availableDates: IAvailableDates[] = getDummyAvailableDates();
+
+export const bookedData = {
+  appointmentDate: getNextDays(2).toISOString(),
+  appointmentTime: availableDates?.[0].slotTimes?.[2] || '11:00-12:00',
+  roomID: '',
+  shopID: 1,
+  isMine: true,
+};
 
 export const products: IEntity[] = [
   {
