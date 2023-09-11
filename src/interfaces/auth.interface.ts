@@ -1,4 +1,4 @@
-import { PLATFORM, PROVIDERS } from '~interfaces/enumerables';
+import { PLATFORM } from '~interfaces/enumerables';
 import { LANGUAGES } from '~translations/common';
 
 export interface IUser {
@@ -7,7 +7,6 @@ export interface IUser {
   email: string;
   countryCode?: string;
   telephone?: string;
-  provider?: PROVIDERS;
   providerUserID?: string;
   newsletter: boolean;
   os: PLATFORM;

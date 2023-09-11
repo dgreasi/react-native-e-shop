@@ -11,6 +11,9 @@ All notable changes to this project will be documented in this file.
 
 ### Features
 
+- (**RN**) Add screens to show examples of scheduling an appointment.
+- (**RN**) Create dummy hooks to get data for calendar.
+- (**RN**) Add mechanism of translations.
 - (**RN**) Create extra screen to use only the `@dgreasi/react-native-time-slot-picker` lib.
 - (**RN**) Re-structure folder structure.
 - (**RN**) Remove unused props from interface.
