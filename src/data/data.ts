@@ -1,31 +1,6 @@
 import { IEntity } from '~interfaces/entity.interface';
 import { IAvailableDates } from '~interfaces/dto/schedule.dto';
 
-export const dateNames = [
-  'CALENDAR.SUNDAY',
-  'CALENDAR.MONDAY',
-  'CALENDAR.TUESDAY',
-  'CALENDAR.WEDNESDAY',
-  'CALENDAR.THURSDAY',
-  'CALENDAR.FRIDAY',
-  'CALENDAR.SATURDAY',
-];
-
-export const monthNames = [
-  'CALENDAR.JANUARY',
-  'CALENDAR.FEBRUARY',
-  'CALENDAR.MARCH',
-  'CALENDAR.APRIL',
-  'CALENDAR.MAY',
-  'CALENDAR.JUNE',
-  'CALENDAR.JULY',
-  'CALENDAR.AUGUST',
-  'CALENDAR.SEPTEMBER',
-  'CALENDAR.OCTOBER',
-  'CALENDAR.NOVEMBER',
-  'CALENDAR.DECEMBER',
-];
-
 const getNextDays = (daysToAdd: number, currentDate = new Date()) => {
   const nextDate = new Date(currentDate);
   nextDate.setDate(currentDate.getDate() + daysToAdd);
