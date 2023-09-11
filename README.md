@@ -35,7 +35,7 @@ A simple react native project that consists of:
    - Contains the list of favourite products
    - You can remove each one by tapping the favourite button in each product card
 6) Profile tab
-   - Empty/dummy profile screen
+   - Buttons to navigate to screens that use the `@dgreasi/react-native-time-slot-picker` lib to schedule an appointment
 7) Product screen, consists of:
    - Image of the product
    - Title and Favourite button section
@@ -62,7 +62,7 @@ A simple react native project that consists of:
 "node": "^16", # Globally installed
 "yarn": "1.22.19", # Globally installed
 "react": "18.2.0",
-"react-native": "0.72.3",
+"react-native": "0.72.4",
 ```
 
 ## Install dependencies
@@ -78,27 +78,20 @@ yarn ios # Will run application to latest iPhone simulator
 
 ## App functionality
 
-### Home screen
-![Home screen](screenshots/1.png)
-### Search screen - Empty state - No searches
-![Search screen](screenshots/2.png)
-### Search screen - Search results
-![Search screen](screenshots/3.png)
-### Search screen - Empty state - Recent search
-![Movie details screen](screenshots/4.png)
-### Cart screen - Empty state
-![Cart screen](screenshots/5.png)
-### Cart screen - Products in cart
-![Cart screen](screenshots/6.png)
-### Cart screen - Delete product from cart
-![Cart screen](screenshots/7.png)
-### Checkout screen
-![Checkout screen](screenshots/8.png)
-### Favourites screen - Products in list
-![Favourites screen](screenshots/9.png)
-### Product screen - Drawer closed
-![Product screen](screenshots/10.png)
-### Product screen - Drawer opened
-![Product screen](screenshots/11.png)
-### Profile screen
-![Profile screen](screenshots/12.png)
+[<img src="screenshots/1.png" width="180"/>](screenshots/1.png)
+[<img src="screenshots/2.png" width="180"/>](screenshots/2.png)
+[<img src="screenshots/3.png" width="180"/>](screenshots/3.png)
+[<img src="screenshots/4.png" width="180"/>](screenshots/4.png)
+[<img src="screenshots/5.png" width="180"/>](screenshots/5.png)
+[<img src="screenshots/6.png" width="180"/>](screenshots/6.png)
+[<img src="screenshots/7.png" width="180"/>](screenshots/7.png)
+[<img src="screenshots/8.png" width="180"/>](screenshots/8.png)
+[<img src="screenshots/9.png" width="180"/>](screenshots/9.png)
+[<img src="screenshots/10.png" width="180"/>](screenshots/10.png)
+[<img src="screenshots/11.png" width="180"/>](screenshots/11.png)
+[<img src="screenshots/12.png" width="180"/>](screenshots/12.png)
+[<img src="screenshots/13.png" width="180"/>](screenshots/13.png)
+[<img src="screenshots/14.png" width="180"/>](screenshots/14.png)
+[<img src="screenshots/15.png" width="180"/>](screenshots/15.png)
+[<img src="screenshots/16.png" width="180"/>](screenshots/16.png)
+[<img src="screenshots/17.png" width="180"/>](screenshots/17.png)
